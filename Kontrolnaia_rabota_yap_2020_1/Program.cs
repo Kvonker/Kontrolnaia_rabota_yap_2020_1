@@ -216,7 +216,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
 
         public override string ToString()
         {
-            return string.Format("\nTheme: {0}\nNameOfOrg: {1}\nNumberOfRed: {2}\nLast: {3}\nPublications: {4} ", Theme, NameOfOrg, NumberOfRed, Last, _publications);
+            return string.Format("\nTheme: {0}\nNameOfOrg: {1}\nNumberOfRed: {2}\nLast: {3}\nPublications: {4} ", Theme, NameOfOrg, NumberOfRed, Last, Papers);
         }
 
         public string ToShortString()
