@@ -112,7 +112,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
         }
     }
 
-    class ResearchTeam
+    class  ResearchTeam
     {
         private string Theme; 
         private string NameOfOrg; 
@@ -134,12 +134,9 @@ namespace Kontrolnaia_rabota_yap_2020_1
         }
 
         //Конструктор без параметров, инициализирующий поля класса значениями по умолчанию
-        public ResearchTeam(): this(new Person("Ecology", "Colos", 0123456789, new TimeFrame(15), Paper.Spe * *****t, 1) //конструктор без параметров, инициализирующий поля класса значениями по умолчанию
+        public ResearchTeam() : this(new Person("Ecology", "Colos", new DateTime(1978, 4, 2) ))
         { }
     
-
-    //В классе ResearchTeam определить свойства c методами get и set
-    //Cвойство типа string для доступа к полю с названием темы исследова-ний
         public string theme
         {
             get
@@ -148,8 +145,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
             }
         }
 
-        //Cвойство типа string для доступа к полю с названием организации
-        public string nameofogr
+        public string nameoforg
         {
             get
             {
@@ -157,7 +153,6 @@ namespace Kontrolnaia_rabota_yap_2020_1
             }
         }
 
-        //Cвойство типа int для доступа к полю с номером регистрации
         public int numberofred
         {
             get
@@ -166,17 +161,15 @@ namespace Kontrolnaia_rabota_yap_2020_1
             }
         }
 
-        //Cвойство типа TimeFrame для доступа к полю с продолжительностью ис-следований
-        public TimeFrame Last
+        public TimeFrame last
         {
             get
             {
-                return last;
+                return Last;
             }
         }
 
-        //Cвойство типа Paper[] для доступа к полю со списком публикаций по те-ме исследований
-        public IReadOnlyList<Paper> Publications // свойство типа Exam [] для доступа к полю со списком экзаменов
+        public IReadOnlyList<Paper> Publications 
         {
             get
             {
