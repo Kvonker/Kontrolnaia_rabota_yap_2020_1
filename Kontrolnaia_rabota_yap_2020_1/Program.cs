@@ -211,7 +211,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
         //Метод void AddPapers ( params Paper[] ) для добавления элементов в список публикаций
         public void AddPapers(params Paper[])
         {
-            Papers.AddRange();
+            Papers.AddRange(new List<Paper>());
         }
 
         public override string ToString()
