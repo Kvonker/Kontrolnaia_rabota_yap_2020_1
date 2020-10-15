@@ -12,17 +12,83 @@ namespace Kontrolnaia_rabota_yap_2020_1
     {
         static void Main(string[] args)
         {
+
+            int nrow;
+            int ncolumn;
+
+            Console.WriteLine("<===== Введите количество строк и количество столбцов =====>");
+            Console.WriteLine("*для разделения чисел при вводе можно использовать:\n \" \" - пробел \n \"&\" - знак и \n \"| \\ / \" - любую линию");
+            Console.WriteLine("<Ввод>");
+
+            string main_mass = Console.ReadLine();
+            char[] deliters = { ' ', '&', '\\', '|', '/' };
+            string[] second_mass = main_mass.Split(deliters, StringSplitOptions.RemoveEmptyEntries);
+
+            nrow = Convert.ToInt32(second_mass[0]);
+            ncolumn = Convert.ToInt32(second_mass[1]);
+
+            Console.WriteLine($"{nrow} and {ncolumn}");
+
+            int len = nrow * ncolumn;
+            int[] mass_1 = new int[len];
+            int[,] mass_2 = new int[nrow, ncolumn];
+            
+            for(int i = 0;i < len;i++)
+            {
+                mass_1[i] = i;
+                i++;
+            }
+
+            int k = 0;
+            for (int i = 0; i < nrow; i++)
+            {
+                for (int j = 0; j < ncolumn; j++)
+                {
+                    mass_2[i,j] = k;
+                    j++;
+                    k++;
+                }
+                i++;
+            }
+
+
+            //Допустим нам надо увеличить вск элменты на 15\\
+            
+            //Увеличения для одномерного массива\\
+            int r = 0;
+
+            float start = Environment.TickCount;
+            while (r < len)
+            {
+                mass_1[r] = mass_1[r] + 15;
+                r++;
+            }
+            float finish = Environment.TickCount;
+            Console.WriteLine($"Время отработки одномерного массива > E={0:F10}", finish - start);
+
+            r = 0;
+            //Для прямоугольного массива\\
+            int f = 0;
+            start = Environment.TickCount;
+            while (r < nrow)
+            {
+                while (f < ncolumn)
+                {
+                    mass_2[r, f] += 15;
+                    f++;
+                }
+                r++;
+            }
+            finish = Environment.TickCount;
+            Console.WriteLine($"Время отработки прямоугольного массива > E={0:F10}", finish - start);
+
+            //==================================\\
             ResearchTeam std = new ResearchTeam(); 
             Console.WriteLine(std.ToShortString());
-
-            int nrow = 2;
-            int ncolumn = 3;
-            int[] mass_1 = new int[nrow * ncolumn];
-            int[,] mass_2 = new int[nrow, ncolumn];
-
-            Console.WriteLine("Hello World!");
+            //==================================\\
         }
     }
+
     class Person
     {
         private 
