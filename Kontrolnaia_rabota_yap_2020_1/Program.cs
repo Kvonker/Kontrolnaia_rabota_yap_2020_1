@@ -127,11 +127,6 @@ namespace Kontrolnaia_rabota_yap_2020_1
         private TimeFrame Last;
         private List<Paper> Papers = new List<Paper>();
 
-
-        //В классе ResearchTeam определить конструкторы
-        //Конструктор c параметрами типа string, string, int, TimeFrame для инициализации соответствующих полей класса
-
-
         public ResearchTeam(string theme, string nameoforg, int numberofred, TimeFrame last)
         {
             Theme = theme;
@@ -209,7 +204,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
 
 
         //Метод void AddPapers ( params Paper[] ) для добавления элементов в список публикаций
-        public void AddPapers(params Paper[])
+        public void AddPapers( params Paper[] a )
         {
             Papers.AddRange(new List<Paper>());
         }
