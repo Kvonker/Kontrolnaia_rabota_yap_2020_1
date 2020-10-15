@@ -13,7 +13,14 @@ namespace Kontrolnaia_rabota_yap_2020_1
         static void Main(string[] args)
         {
             ResearchTeam std = new ResearchTeam(); 
-            Console.WriteLine(std.ToShortString()); 
+            Console.WriteLine(std.ToShortString());
+
+            int nrow = 2;
+            int ncolumn = 3;
+            int[] mass_1 = new int[nrow * ncolumn];
+            int[,] mass_2 = new int[nrow, ncolumn];
+
+            Console.WriteLine("Hello World!");
         }
     }
     class Person
@@ -101,7 +108,7 @@ namespace Kontrolnaia_rabota_yap_2020_1
         }
 
         // конструктор без параметров, инициализирующий все свойства класса некоторыми значениями по умолчанию
-        private Paper() : this("WarandWorld", "Lolstoy", new DateTime(1999, 10, 1))
+        private Paper() : this("WarandWorld", new Person("Timo","Melni",new DateTime(2001,10,18)), new DateTime(1999, 10, 1))
         { }
 
 
@@ -112,11 +119,11 @@ namespace Kontrolnaia_rabota_yap_2020_1
         }
     }
 
-    class  ResearchTeam
+    class ResearchTeam
     {
-        private string Theme; 
-        private string NameOfOrg; 
-        private int NumberOfRed; 
+        private string Theme;
+        private string NameOfOrg;
+        private int NumberOfRed;
         private TimeFrame Last;
         private List<Paper> Papers = new List<Paper>();
 
@@ -134,9 +141,9 @@ namespace Kontrolnaia_rabota_yap_2020_1
         }
 
         //Конструктор без параметров, инициализирующий поля класса значениями по умолчанию
-        public ResearchTeam() : this(new Person("Ecology", "Colos", new DateTime(1978, 4, 2) ))
+        public ResearchTeam() : this("BlackLife","GoodDay",2005, new TimeFrame())
         { }
-    
+
         public string theme
         {
             get
@@ -169,35 +176,32 @@ namespace Kontrolnaia_rabota_yap_2020_1
             }
         }
 
-        public IReadOnlyList<Paper> Publications 
+        public IReadOnlyList<Paper> Publications
         {
             get
             {
-                return _publications.AsReadOnly();
+                return Papers.AsReadOnly();
             }
         }
 
 
-        //Cвойство типа Paper[] для доступа к полю со списком публикаций по те-ме исследований
-        //Cвойство типа Paper ( только с методом get), которое возвращает ссылку на публикацию с самой поздней датой выхода; если список публикаций пустой, свойство возвращает значение null
-        public double ListPublic
+        /*public double ListPublic
         {
             get
             {
-                /*double averageGrade = _passedExams.Average(avgrade => avgrade.Grade);
-                return averageGrade;*/
+                double averageGrade = _passedExams.Average(avgrade => avgrade.Grade);
+                return averageGrade;
                 return null;
             }
         }
+        */
 
-
-        //Индексатор булевского типа (только с методом get) с одним параметром типа Education; значение индексатора равно true, если значение поля с формой обучения студента совпадает со значением индекса, и false в противном случае
         public bool this[TimeFrame rez_prov]
         {
             get
             {
                 bool rez;
-                if (rez_prov == TimeFrame) rez = true;
+                if (this.Last == rez_prov) rez = true;
                 else rez = false;
                 return rez;
             }
@@ -205,33 +209,20 @@ namespace Kontrolnaia_rabota_yap_2020_1
 
 
         //Метод void AddPapers ( params Paper[] ) для добавления элементов в список публикаций
-        public void AddPapers(params Paper[] )
+        public void AddPapers(params Paper[])
         {
-            _publications.AddRange();
+            Papers.AddRange();
         }
 
-
-        //Gерегруженную версию виртуального метода string ToString() для фор-мирования строки со значениями всех полей класса, включая список пуб-ликаций
         public override string ToString()
         {
             return string.Format("\nTheme: {0}\nNameOfOrg: {1}\nNumberOfRed: {2}\nLast: {3}\nPublications: {4} ", Theme, NameOfOrg, NumberOfRed, Last, _publications);
         }
 
-        //Виртуальный метод string ToShortString(), который формирует строку со значениями всех полей класса без списка публикаций
-        public string ToShortString() // виртуальный метод string ToShortString(), который формирует строку со значениями всех полей класса без списка экзаменов, но со значением среднего балла.
+        public string ToShortString()
         {
             return string.Format("\nTheme: {0}\nNameOfOrg: {1}\nNumberOfRed: {2}\nLast: {3}\n", Theme, NameOfOrg, NumberOfRed, Last);
         }
-    }
-
-    static void Main(string[] args)
-    {
-        int nrow = 2;
-        int ncolumn = 3;
-        int[] mass_1 = new int[nrow * ncolumn];
-        int[,] mass_2 = new int[nrow, ncolumn];
-
-        Console.WriteLine("Hello World!");
     }
 
 }
